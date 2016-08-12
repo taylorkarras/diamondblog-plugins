@@ -128,7 +128,6 @@ $global->sqlquery("DELETE FROM ddp_pushnotifications_list WHERE list_endpoint = 
 }
 }
 }
-		exit;
     }
 }
 ?>
