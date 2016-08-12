@@ -122,8 +122,9 @@ $gcm = curl_init("https://fcm.googleapis.com/fcm/send");
 curl_setopt($gcm, CURLOPT_POST, true);
 curl_setopt($gcm, CURLOPT_POSTFIELDS, $json);
 curl_setopt($gcm, CURLOPT_HTTPHEADER, $headers);
-	}
-if(strpos(curl_exec($gcm), 'NotRegistered')){
+$gcm_output = curl_exec($gcm);
+        }
+if(strpos($gcm_output, 'NotRegistered')){
 $global->sqlquery("DELETE FROM ddp_pushnotifications_list WHERE list_endpoint = '".$row['list_endpoint']."';");
 }
 }
