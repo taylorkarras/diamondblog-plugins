@@ -28,7 +28,7 @@ if ('Notification' in window) {
 
 var socket = io.connect('".$settings2['nodejs_server']."');
 
-	socket.emit('register', {blogname: 'vapourban'});
+	socket.emit('register', {blogname: '".$settings2['clientname']."'});
 
 if ('serviceWorker' in navigator) {
 navigator.serviceWorker.register('/sw.js');
@@ -107,14 +107,13 @@ socket.on('notification', function (data) {
 
 $elephant = new Elephant(new Version1X('https://central.vapourban.com:8000'));
 $elephant->initialize();
-$elephant->emit('broadcast', ['blogname' => 'vapourban','type' => 'notification','args' => array('logo' => 'https://vapourban.com/images/android-icon-192x192.png', 'title' => 'New Post in '.$GLOBALS['category'], 'message' => $GLOBALS['posttitle'], 'url' => 'http://vapourban.com/'.$GLOBALS['shortlink'])]);
+$elephant->emit('broadcast', ['blogname' => $settings2['clientname'],'type' => 'notification','args' => array('logo' => 'https://'.$_SERVER['HTTP_HOST'].'/images/favicon-192px.png', 'title' => 'New Post in '.$GLOBALS['category'], 'message' => $GLOBALS['posttitle'], 'url' => 'http://'.$_SERVER['HTTP_HOST'].$GLOBALS['shortlink'])]);
 $elephant->close();
 if ($pushcode->num_rows > '0') {
 
 while ($row = $pushcode->fetch_assoc()) {
 
-	if(strpos($row['list_useragent'], 'Chrome')){
-$data = array("registration_ids" => array($row['list_endpoint']), "notification" => array("body" => $GLOBALS['posttitle'], "title" => "New Post in ".$GLOBALS['category'], "icon" => "https://vapourban.com/images/android-icon-192x192.png", "click_action" => "http://vapourban.com/".$GLOBALS['shortlink']));
+$data = array("registration_ids" => array($row['list_endpoint']), "notification" => array("body" => $GLOBALS['posttitle'], "title" => "New Post in ".$GLOBALS['category'], "icon" => "https://".$_SERVER['HTTP_HOST']."/images/favicon-192px.png", "click_action" => "https://"._SERVER['HTTP_HOST']."/".$GLOBALS['shortlink']));
 $json = str_replace(array("\\r","\\n","\\t"), "",json_encode($data,JSON_PRETTY_PRINT));
 
 $headers = array('Authorization: key='.$settings2['gcm_apiid'],'Content-Type:' . 'application/json');
@@ -122,8 +121,9 @@ $gcm = curl_init("https://fcm.googleapis.com/fcm/send");
 curl_setopt($gcm, CURLOPT_POST, true);
 curl_setopt($gcm, CURLOPT_POSTFIELDS, $json);
 curl_setopt($gcm, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($gcm, CURLOPT_RETURNTRANSFER, true);
 $gcm_output = curl_exec($gcm);
-        }
+
 if(strpos($gcm_output, 'NotRegistered')){
 $global->sqlquery("DELETE FROM ddp_pushnotifications_list WHERE list_endpoint = '".$row['list_endpoint']."';");
 }
