@@ -39,8 +39,9 @@ static function post_form_bottom(){
 	$isreview = '1" checked';
 	} else {
 	$isreview = '0"';
-	$rating = '5';
-	}}
+	}} else {
+	$isreview = '0"';
+	}
 	
         echo '<br /><br /><label title="review"><b>Review rating:</b></label>
 <div class="sitescrolling"><br><input type="checkbox" name="isreview" value="'.$isreview.'> This is a review.</div>';
