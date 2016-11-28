@@ -8,6 +8,7 @@ These are plugins that I've made for DiamondBlog as a way to extend my own funct
 5. AddThis (to add AddThis code)
 6. AdSense (to add AdSense code)
 7. ReCaptcha (to add ReCaptcha code)
+8. Review Ratings (for reviews, to add ratings to them)
 
 To install, simply drag them to the plugins folder of your diamondblog installation.
 
