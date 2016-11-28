@@ -162,9 +162,9 @@ if ($the_post_id !== $creviewcheck_init['c_postid']){
 		echo '</div>';
 		echo '</div>';
 		if ($reviewsettings_init['userratings_enabled'] == '1'){
-		echo '<div id="userrate" class="printhide">';
-				if ($check->ifbanned() or $check->istor()){
+				if ($check->ifbanned() or $check->istor() or $check->isLoggedIn()){
 		} else {
+		echo '<div id="userrate" class="printhide">';
 		if ($ureview_init['u_ip'] == $_SERVER['REMOTE_ADDR']){
 		echo '<h2 style="text-align:center">You rated this as: '.$ureview_init['u_rated'].'</h3>';
 		} else {
@@ -178,7 +178,7 @@ echo "<script>function outputUpdate(vol) {
 }</script>";
 echo '<input name="voteip" type="hidden" value="'; echo $_SERVER['REMOTE_ADDR']; echo '">';
 echo '<br /><br /><input style="margin:auto" class="ratingsubmit" name="ratingsubmit" type="submit" value="Rate"></form>';
-		echo '</div>';
+		echo '</div></div>';
 		}
 		}
 		}
