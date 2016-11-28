@@ -160,7 +160,7 @@ if ($the_post_id !== $creviewcheck_init['c_postid']){
 		echo '</div>';
 		echo '</div>';
 		if ($reviewsettings_init['userratings_enabled'] == '1'){
-		echo '<div id="userrate">';
+		echo '<div id="userrate" class="printhide">';
 				if ($check->ifbanned() or $check->istor()){
 		} else {
 		if ($ureview_init['u_ip'] == $_SERVER['REMOTE_ADDR']){
