@@ -73,7 +73,7 @@ echo "</div>";
 				$global = new DB_global;
 			
 	if ($_POST['isreview'] == '1' && !empty($_POST['postidtoedit'])){
-		if (!$global->sqlquery("UPDATE `ddp_reviewratings_content` SET `c_rating` = '".$_POST['userrating']."' WHERE `ddp_reviewratings_content`.`c_postid` = '".$_POST['postidtoedit']."';")){
+		if ($global->sqlquery("UPDATE `ddp_reviewratings_content` SET `c_rating` = '".$_POST['userrating']."' WHERE `ddp_reviewratings_content`.`c_postid` = '".$_POST['postidtoedit']."';")){
 		$global->sqlquery("INSERT INTO `ddp_reviewratings_content` (`c_rating`, `c_postid`) VALUES ('".$_POST['userrating']."', '".$_POST['postidtoedit']."');");
 		}
 	} else if ($_POST['isreview'] == '0' && !empty($_POST['postidtoedit'])){
@@ -140,14 +140,16 @@ if ($the_post_id !== $creviewcheck_init['c_postid']){
 		echo '<h2>User Rating</h2>';
 		echo '<h3';
 		if ($reviewsettings_init['ratings_range'] == '1'){
-		if ($ureviewscore_init['AVG(u_rated)'] > '4'){
+		if ($ureviewscore_init['AVG(u_rated)'] == 0){
+		} else if ($ureviewscore_init['AVG(u_rated)'] > '4'){
 		echo ' style="color:#00ea00"';
 		} else if ($ureviewscore_init['AVG(u_rated)'] < '2'){
 		echo ' style="color:#f90909"';	
 		} else {
 		echo ' style="color:#ffbf01"';
 		}} else {
-		if ($ureviewscore_init['AVG(u_rated)'] > '7'){
+		if ($ureviewscore_init['AVG(u_rated)'] == 0){
+		} else if ($ureviewscore_init['AVG(u_rated)'] > '7'){
 		echo ' style="color:#00ea00"';
 		} else if ($ureviewscore_init['AVG(u_rated)'] < '4'){
 		echo ' style="color:#f90909"';	
