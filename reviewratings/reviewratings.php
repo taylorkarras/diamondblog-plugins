@@ -61,7 +61,7 @@ echo "</div>";
 
     static function inc_post_form_bottom(){
 
-	if ($_POST['isreview'] == '1' && !empty($_POST['postidtoedit'])){
+	if ($_POST['isreview'] == '1'){
 		$global = new DB_global;
 		$post_id = $global->sqlquery("SELECT content_id FROM dd_content WHERE content_shortlink LIKE '".$GLOBALS['shortlink']."'");
 		$post_id_init = $post_id->fetch_assoc();
