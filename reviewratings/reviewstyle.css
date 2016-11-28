@@ -1,0 +1,52 @@
+#ratingsbox {
+	display:table;
+    width: 65%;
+	margin: auto;
+}
+
+.ratingsboxcontent{
+	display:table-cell;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+.ratingsboxuser{
+	display:table-cell;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+.ratingsboxcontent h3, .ratingsboxuser h3 {
+	font-size: 35px;
+}
+
+#userrate {
+	display:table;
+    width: 65%;
+	margin: auto;
+	padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#userrate h2{
+	text-align: center;
+}
+
+#urvalue {
+    font-size: 34px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#userrating {
+	width: 75%;
+}
+
+.ratingsubmit{
+    margin: auto;
+    width: 100px;
+    display: table;
+    font-size: 20px;
+}
