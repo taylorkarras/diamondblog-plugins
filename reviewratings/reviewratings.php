@@ -41,6 +41,11 @@ static function post_form_bottom(){
 	$isreview = '0"';
 	}} else {
 	$isreview = '0"';
+		if($reviewsettings_init = '2'){
+	$rating = '5';}
+	else if ($reviewsettings_init = '1'){
+	$rating = '3';
+	}
 	}
 	
         echo '<br /><br /><label title="review"><b>Review rating:</b></label>
@@ -85,8 +90,9 @@ echo "</div>";
 static function post_contentbottom(){
 	$check = new DB_check;
 	$global = new DB_global;
+	$retrive = new DB_retrival;
 	$link = str_replace("/", "", $_SERVER['REQUEST_URI']);
-	$post_id = $global->sqlquery("SELECT content_id FROM dd_content WHERE content_permalink LIKE '$link'");
+	$post_id = $global->sqlquery("SELECT * FROM dd_content WHERE content_permalink LIKE '$link'");
 	$post_id_init = $post_id->fetch_assoc();
 	$the_post_id = $post_id_init['content_id'];
 	$reviewsettings = $global->sqlquery("SELECT * FROM ddp_reviewratings");
@@ -182,6 +188,32 @@ echo '<br /><br /><input style="margin:auto" class="ratingsubmit" name="ratingsu
 		echo '</div></div>';
 		}
 		}
+$titleinit = $global->sqlquery("SELECT site_name FROM dd_settings LIMIT 1;");
+$title = $titleinit->fetch_assoc();
+
+echo '<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Thing"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "'.$retrive->realname($post_id_init['content_author']).'"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "'.$creview_init['c_rating'].'",
+    "bestRating": "'.$rs.'",
+    "worstRating": "1"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "'.$title['site_name'].'"
+  }
+}
+</script>';
 		}
 		return true;
 }
