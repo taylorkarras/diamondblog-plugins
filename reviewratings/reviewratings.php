@@ -87,6 +87,103 @@ echo "</div>";
 	}
 	}
 
+static function amp_style(){
+	echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/plugins/reviewratings/reviewstyle.css');
+	
+	echo '.goodrating {
+		color:#00ea00
+	}
+	
+	.meidocrerating {
+		color:#ffbf01
+	}
+	
+	.badrating {
+		color:#f90909
+	}';
+}
+	
+static function amp_post_bottom(){
+	$check = new DB_check;
+	$global = new DB_global;
+	$retrive = new DB_retrival;
+	$link = explode("/", $_SERVER['REQUEST_URI']);
+	$post_id = $global->sqlquery("SELECT * FROM dd_content WHERE content_permalink LIKE '".$link[1]."'");
+	$post_id_init = $post_id->fetch_assoc();
+	$the_post_id = $post_id_init['content_id'];
+	$reviewsettings = $global->sqlquery("SELECT * FROM ddp_reviewratings");
+	$reviewsettings_init = $reviewsettings->fetch_assoc();
+	$creview = $global->sqlquery("SELECT c_rating FROM ddp_reviewratings_content WHERE c_postid = '$the_post_id'");
+	$creview_init = $creview->fetch_assoc();
+	$creviewcheck = $global->sqlquery("SELECT c_postid FROM ddp_reviewratings_content WHERE c_postid = '$the_post_id'");
+	$creviewcheck_init = $creviewcheck->fetch_assoc();
+	$ureview = $global->sqlquery("SELECT * FROM ddp_reviewratings_user WHERE u_postid = '$the_post_id' AND u_ip = '".$_SERVER['REMOTE_ADDR']."';");
+	$ureview_init = $ureview->fetch_assoc();
+	$ureviewscore = $global->sqlquery("SELECT AVG(u_rated) FROM ddp_reviewratings_user WHERE u_postid = '$the_post_id'");
+	$ureviewscore_init = $ureviewscore->fetch_assoc();
+	$ureviewcount1 = $global->sqlquery("SELECT u_rated FROM ddp_reviewratings_user WHERE u_postid = '$the_post_id';");
+	$ureviewcount = $ureviewcount1->num_rows;
+	
+	if($reviewsettings_init['ratings_range'] == '2'){
+	$rs = '10';
+	$value = '5';}
+	else if ($reviewsettings_init['ratings_range'] == '1'){
+	$rs = '5';
+	$value = '3';
+	}
+
+if ($the_post_id !== $creviewcheck_init['c_postid']){
+} else {
+		echo '<div id="ratingsbox" class="plugintheme">';
+        echo '<div class="ratingsboxcontent pluginthemeleft">';
+		echo '<h2>Our Rating</h2>';
+		echo '<h3';
+		if ($reviewsettings_init['ratings_range'] == '1'){
+		if ($creview_init['c_rating'] > '4'){
+		echo ' class="goodrating"';
+		} else if ($creview_init['c_rating'] < '2'){
+		echo ' class="badrating"';	
+		} else {
+		echo ' class="meidocrerating"';
+		}
+		} else {
+		if ($creview_init['c_rating'] > '7'){
+		echo ' class="goodrating"';
+		} else if ($creview_init['c_rating'] < '4'){
+		echo ' class="badrating"';	
+		} else {
+		echo ' class="meidocrerating"';
+		}}
+		echo '>'.$creview_init['c_rating'].'</h3>';
+		echo '</div>';
+		echo '<div class="ratingsboxuser">';
+		echo '<h2>User Rating</h2>';
+		echo '<h3';
+		if ($reviewsettings_init['ratings_range'] == '1'){
+		if ($ureviewscore_init['AVG(u_rated)'] == 0){
+		} else if ($ureviewscore_init['AVG(u_rated)'] > '4'){
+		echo ' class="goodrating"';
+		} else if ($ureviewscore_init['AVG(u_rated)'] < '2'){
+		echo ' class="badrating"';		
+		} else {
+		echo ' class="meidocrerating"';
+		}} else {
+		if ($ureviewscore_init['AVG(u_rated)'] == 0){
+		} else if ($ureviewscore_init['AVG(u_rated)'] > '7'){
+		echo ' class="goodrating"';
+		} else if ($ureviewscore_init['AVG(u_rated)'] < '4'){
+		echo ' class="badrating"';	
+		} else {
+		echo ' class="meidocrerating"';
+		}
+		}
+		echo '>'.round($ureviewscore_init['AVG(u_rated)']* '2')/'2'.'</h3>';
+		echo '<small>(based on '.number_format($ureviewcount).' ratings)</small>';
+		echo '</div>';
+		echo '</div>';	
+}
+}
+	
 static function post_contentbottom(){
 	$check = new DB_check;
 	$global = new DB_global;
