@@ -7,7 +7,7 @@ if( !defined( "INPROCESS" ) ){
 
 class relatedcontent extends plugin {
 
-	static function amp_style(){
+/*	static function amp_style(){
 echo '.ampspacing {
     padding: 10px;
     margin-bottom: 20px;
@@ -73,7 +73,7 @@ text-decoration: none;
 	}
 	echo '</ul></div>';
   }
-  }
+  }*/
 
     static function post_bottom(){
 	$check = new DB_check;
