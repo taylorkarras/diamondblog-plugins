@@ -25,7 +25,7 @@ echo '<meta name="twitter:card" content="summary_large_image">';
 echo '<meta name="twitter:card" content="summary">';
 }
 echo '<meta name="twitter:site" content="@'.$twitter2['twitter_username'].'">';
-preg_match('/[^< *img*src *= *>"\']?([^"\']*)+(png|jpg|gif)/' , $resultpost2['content_description'], $image); 
+preg_match('/[^< *img*src *= *>"\']*(http[^"\']*)+(png|jpg|gif)/' , $resultpost2['content_description'], $image); 
 if (!empty($resultpost2['content_title'])){
 echo '<meta property="twitter:title" content="'.$resultpost2['content_title'].'">';
 }
