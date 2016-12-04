@@ -280,9 +280,8 @@ oninput="outputUpdate(value)">
 echo "<script>function outputUpdate(vol) {
 	document.querySelector('#urvalue').value = vol;
 }</script>";
-echo '<input name="voteip" type="hidden" value="'; echo $_SERVER['REMOTE_ADDR']; echo '">';
 echo '<br /><br /><input style="margin:auto" class="ratingsubmit" name="ratingsubmit" type="submit" value="Rate"></form>';
-		echo '</div></div>';
+		echo '</div>';
 		}
 		}
 $titleinit = $global->sqlquery("SELECT site_name FROM dd_settings LIMIT 1;");
