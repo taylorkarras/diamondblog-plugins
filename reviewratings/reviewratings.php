@@ -48,8 +48,14 @@ static function post_form_bottom(){
 	}
 	}
 	
-        echo '<br /><br /><label title="review"><b>Review rating:</b></label>
-<div class="sitescrolling"><br><input type="checkbox" name="isreview" value="'.$isreview.'> This is a review.</div>';
+        echo '<br /><br /><label title="review"><b>Review rating:</b></label>';
+echo '<style>';
+echo '#urvalue{
+    position: absolute;
+    margin-left: 15px;
+}';
+echo '</style>';
+echo '<div class="sitescrolling"><br><input type="checkbox" name="isreview" value="'.$isreview.'> This is a review.</div>';
 echo '<div style="width:80%; margin:auto;"><input type="range" style="width:90%;" min="1" max="'.$rs.'" step="0.5" name="userrating" value="'.$rating.'" id="userrating" 
 oninput="outputUpdate(value)">
 <output for="userrating" id="urvalue">'.$rating.'</output>';
@@ -217,6 +223,17 @@ if ($the_post_id !== $creviewcheck_init['c_postid']){
 } else {
 		echo '<style>';
 		echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/plugins/reviewratings/reviewstyle.css');
+		echo '<style media="screen and (max-width : 482px)">';
+		echo '.ratingsubmit {
+    position: relative;
+    left: 20px;
+}
+
+#userrate {
+    position: relative;
+    right: 3.5%;
+}';
+		echo '</style>';
 		echo '</style>';
 		echo '<div id="ratingsbox" class="plugintheme">';
         echo '<div class="ratingsboxcontent pluginthemeleft">';
