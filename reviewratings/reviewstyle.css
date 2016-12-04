@@ -24,11 +24,11 @@
 
 #userrate {
 	display:table;
-    width: 65%;
+    width: 100%;
 	margin: auto;
 	padding-top: 10px;
     padding-bottom: 10px;
-	text-align: center;
+	text-align:center;
 }
 
 #userrate h2{
@@ -39,6 +39,8 @@
     font-size: 34px;
     padding: 10px;
     font-weight: bold;
+    position: absolute;
+    margin-top: -20px;
 }
 
 #userrating {
