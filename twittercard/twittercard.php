@@ -30,7 +30,9 @@ if (!empty($resultpost2['content_title'])){
 echo '<meta property="twitter:title" content="'.$resultpost2['content_title'].'">';
 }
 if (!empty($resultpost2['content_description'])){
+if (!empty($image[0])){
 echo '<meta property="twitter:image" content="'.$image[0].'">';
+}
 }
 if (!empty($resultpost2['content_summary'])){
 echo '<meta property="twitter:description" content="'.strip_tags($resultpost2['content_summary']).'">';
