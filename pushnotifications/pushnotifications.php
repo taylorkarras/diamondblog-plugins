@@ -113,7 +113,7 @@ if ($pushcode->num_rows > '0') {
 
 while ($row = $pushcode->fetch_assoc()) {
 
-$data = array("registration_ids" => array($row['list_endpoint']), "notification" => array("body" => $GLOBALS['posttitle'], "title" => "New Post in ".$GLOBALS['category'], "icon" => "https://".$_SERVER['HTTP_HOST']."/images/favicon-192px.png", "click_action" => "https://"._SERVER['HTTP_HOST']."/".$GLOBALS['shortlink']));
+$data = array("registration_ids" => array($row['list_endpoint']), "notification" => array("body" => $GLOBALS['posttitle'], "title" => "New Post in ".$GLOBALS['category'], "icon" => "https://".$_SERVER['HTTP_HOST']."/images/favicon-192px.png", "click_action" => "https://".$_SERVER['HTTP_HOST']."/".$GLOBALS['shortlink']));
 $json = str_replace(array("\\r","\\n","\\t"), "",json_encode($data,JSON_PRETTY_PRINT));
 
 $headers = array('Authorization: key='.$settings2['gcm_apiid'],'Content-Type:' . 'application/json');
