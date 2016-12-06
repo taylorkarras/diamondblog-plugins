@@ -107,7 +107,7 @@ socket.on('notification', function (data) {
 
 $elephant = new Elephant(new Version1X('https://central.vapourban.com:8000'));
 $elephant->initialize();
-$elephant->emit('broadcast', ['blogname' => $settings2['clientname'],'type' => 'notification','args' => array('logo' => 'https://'.$_SERVER['HTTP_HOST'].'/images/favicon-192px.png', 'title' => 'New Post in '.$GLOBALS['category'], 'message' => $GLOBALS['posttitle'], 'url' => 'http://'.$_SERVER['HTTP_HOST'].$GLOBALS['shortlink'])]);
+$elephant->emit('broadcast', ['blogname' => $settings2['clientname'],'type' => 'notification','args' => array('logo' => 'https://'.$_SERVER['HTTP_HOST'].'/images/favicon-192px.png', 'title' => 'New Post in '.$GLOBALS['category'], 'message' => $GLOBALS['posttitle'], 'url' => 'http://'.$_SERVER['HTTP_HOST'].'/'.$GLOBALS['shortlink'])]);
 $elephant->close();
 if ($pushcode->num_rows > '0') {
 
