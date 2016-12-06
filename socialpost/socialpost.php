@@ -16,11 +16,11 @@ class socialpost extends plugin {
 				$global = new DB_global;
 		$social1 = $global->sqlquery("SELECT * FROM ddp_socialpost");
 		$social2 = $social1->fetch_assoc();
-				if ($_POST['posttotwitter'] == '1'){
+				if (isset($_POST['posttotwitter']) && $_POST['posttotwitter'] == '1'){
 		$tconnection = new TwitterOAuth($social2['twitter_apikey'], $social2['twitter_apisecret'], $social2['twitter_accesstoken'], $social2['twitter_accesstokensecret']);
 		$tconnection->post("statuses/update", ["status" => 'New in "'.$_POST['category'].'" - '.$GLOBALS['posttitle'].' https://'.$_SERVER['HTTP_HOST'].'/'.$GLOBALS['shortlink'].' #vaporwave']);
 				}
-				if ($_POST['posttofacebook'] == '1'){
+				if (isset($_POST['posttofacebook']) && $_POST['posttofacebook'] == '1'){
 		$fb = new Facebook\Facebook([
  'app_id' => $social2['facebook_apikey'],
  'app_secret' => $social2['facebook_apisecret'],
@@ -56,7 +56,7 @@ $pageAccessToken = $social2['facebook_accesstoken'];
 	
 $fb->post('/'.$social2['facebook_pagename'].'/feed', $linkData, $pageAccessToken);
 				}
-				if ($_POST['posttopinterest'] == '1'){
+				if (isset($_POST['posttopinterest']) && $_POST['posttopinterest'] == '1'){
  if (isset($GLOBALS['embedlink'])){
 $embedlink = $GLOBALS['embedlink'];
  } else if (isset($GLOBALS['embedlinkinstagram'])) {
