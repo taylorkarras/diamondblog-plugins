@@ -44,7 +44,7 @@ if(trim($_POST['twitteraccesssecret']) === '' && $_POST['twitterenabled'] == '1'
                 echo json_encode($_SESSION['errors']);
                 exit;
 	}} else {
-			$global->sqlquery("UPDATE `ddp_socialpost` SET `twitter_apikey` = '".$twitterapikey."', `twitter_apisecret` = '".$twitterapisecret."', `twitter_accesstoken` = '".$twitteraccesstoken."', `twitter_accesstokensecret` = '".$twitteraccesssecret."'");
+			$global->sqlquery("UPDATE `ddp_socialpost` SET `twitter_apikey` = '".$twitterapikey."', `twitter_apisecret` = '".$twitterapisecret."', `twitter_accesstoken` = '".$twitteraccesstoken."', `twitter_accesstokensecret` = '".$twitteraccesssecret."', `twitter_extradefault` = '".$_POST['twitterextradefault']."'");
 			        		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			
 				$resp = array();
