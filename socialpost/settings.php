@@ -20,6 +20,8 @@ echo '<div class="sitescrolling">
 <br /><input type="text" name="twitteraccesstoken" value="'.$data['twitter_accesstoken'].'"/>
 <br /><label name="twitteraccesssecret">Twitter Access Secret</label>
 <br /><input type="text" name="twitteraccesssecret" value="'.$data['twitter_accesstokensecret'].'"/>
+<br /><label name="twitteraccesssecret">Twitter Extra Default</label>
+<br /><input type="text" name="twitterextradefault" value="'.$data['twitter_extradefault'].'"/>
 <input type="hidden" name="twitterdistinguish" value="1" />
 <br /><br /><input class="postsubmit" name="twittersubmit" type="submit" value="Submit">
 </form>';
