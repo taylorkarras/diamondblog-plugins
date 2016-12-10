@@ -13,6 +13,7 @@ $global->sqlquery("CREATE TABLE `ddp_socialpost` (
   `twitter_apisecret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `twitter_accesstoken` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `twitter_accesstokensecret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitter_extradefault` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `facebook_apikey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `facebook_apisecret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `facebook_pagename` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
