@@ -13,7 +13,7 @@ if( !defined( "INPROCESS" ) ){
 class socialpost extends plugin {
 
     static function inc_post_form_bottom_error(){
-		if(isset($_POST['posttotwitter']) && $_POST['posttotwitter'] == '1' && strlen('New in "'.$_POST['category'].'" - '.$GLOBALS['posttitle'].' https://'.$_SERVER['HTTP_HOST'].'/'.$GLOBALS['shortlink'].' '.$_POST['twitterextra']) > 140)  {
+		if(isset($_POST['posttotwitter']) && $_POST['posttotwitter'] == '1' && strlen('New in "'.$_POST['category'].'" - '.$GLOBALS['posttitle'].' https://'.$_SERVER['HTTP_HOST'].'/examplexxx '.$_POST['twitterextra']) > 140)  {
 		$_SESSION['errors']['twitterextra'] = "Twitter post cannot be longer than 140 characters.";
 		$hasError = true;	
 	}
@@ -117,7 +117,7 @@ $pinterest->pins->create(array(
     }
     $(".countdown").text("Characters left: " + left);
 	});</script>';
-		echo '<br><textarea style="width:100%; height:50px; color:#000; background-color:white; resize:none;" disabled id="twitterexample"></textarea>';
+		echo '<textarea style="width:100%; height:50px; color:#000; background-color:white; resize:none;" maxlength="140" disabled id="twitterexample"></textarea>';
 		echo '<span class="countdown" style="font-size: 20px;"></span>';
 		$twitterextra = '';
 		if (isset($ifenabled2['twitter_extradefault'])){
