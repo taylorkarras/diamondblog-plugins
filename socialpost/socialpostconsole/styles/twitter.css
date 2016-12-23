@@ -1,0 +1,148 @@
+body{
+	margin:0px;
+	font-family: "Arial";
+}
+
+#twitterbar {
+	    background-color: #e6e6e6;
+		position: relative
+}
+
+#twitterbar ul {
+    text-align: center;
+    list-style: none outside none;
+    text-transform: uppercase;
+    line-height: 0px !important;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#twitterbar li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#twitterbar a {
+	    font-size: 53px;
+    text-decoration: none;
+    color: #000;
+    padding: 14px;
+}
+
+#twitterbar .active {
+	    background-color: #d4d4d4;
+}
+
+.replybox {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
+    background-color: #e6e6e6;
+    padding: 20px;
+}
+
+.replybox textarea {
+width: 100%;
+height: 50px;
+resize: none;
+}
+
+.overflow {
+	padding: 10px;
+}
+
+.tweet {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border: 1px solid #777777;
+    margin-bottom: 15px;
+}
+
+.tweet p {
+    margin: 5px;
+}
+
+
+
+.tweetdate {
+    font-size: 13px;
+    margin-top: 1px;
+    margin-left: 5px;
+}
+
+.tweetimage {
+    float: left;
+    margin: -8px;
+    margin-right: 10px;
+}
+
+.tweetscreenname{
+	display:inline;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 1px;
+}
+
+.tweetrealname{
+	display:inline;
+	margin-left: 4px;
+	font-size: 12px;
+}
+
+.overflow {
+    height: calc(100% - 221px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.tweetverified {
+    display: inline;
+    margin-left: 5px;
+    background-color: #58a7f5;
+    color: #fff;
+    padding-left: 5px;
+    border-radius: 100%;
+    width: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 3px;
+}
+
+.notif {
+    display: inline;
+    position: absolute;
+    background-color: #ff0000;
+    border-radius: 100%;
+    margin-left: -25px;
+	    color: #fff !important;
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+    font-size: 15px !important;
+}
+
+.tweetlinks {
+    float: right;
+    margin-top: -10px;
+}
+
+.message {
+position:fixed;
+    top: 75px;
+width: 100%;
+height: auto;
+z-index: 2;
+white-space: nowrap;
+}
+
+.successmessage {
+	font-size: 22px;
+    text-align: center;
+	margin:auto;
+    background-color: rgb(74, 253, 0);
+    display: table;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid black;
+}

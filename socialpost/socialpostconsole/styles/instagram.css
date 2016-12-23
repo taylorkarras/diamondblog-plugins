@@ -1,0 +1,221 @@
+body {
+font-family: "Arial";
+margin: 0;
+}
+
+.overflow{
+    height: calc(100% - 91px);
+    overflow-y: scroll;
+    padding-top: 15px;
+}
+
+#grambar {
+    position: absolute;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+    background-color: #f9f7d2;
+    border-top: 1px solid #d2d2d2;
+}
+
+#grambar ul {
+    text-align: center;
+    list-style: none outside none;
+    text-transform: uppercase;
+    line-height: 0px !important;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 36px;
+    padding-bottom: 15px;
+}
+
+#grambar li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#grambar a {
+	    font-size: 70px;
+    text-decoration: none;
+    color: #000;
+    padding: 14px;
+}
+
+#grambar .active {
+	    background-color: #fffa94;
+}
+
+.gram {
+    word-break: break-word;
+    width: 400px;
+    border: 1px solid #8a8a8a;
+    padding: 25px;
+    background-color: #fffff9;
+    margin: auto;
+    margin-bottom: 45px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.gramdate {
+    float: right;
+}
+
+.graminfo {
+    display: table;
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+.gramitem {
+	max-width: 400px;
+	max-height: 400px;
+    margin-bottom: 10px;
+    border: 1px solid #8a8a8a;
+}
+
+.gramlikecount {
+    font-weight: bold;
+}
+
+.gramavatar {
+    border-radius: 100%;
+    box-shadow: 1px 1px 5px;
+    height: 30px;
+    position: relative;
+    top: 8px;
+    margin-right: 10px;
+}
+
+.gramverified {
+    background-color: #0075ff;
+    color: #fff;
+    border-radius: 100%;
+    display: inline;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 3px;
+    padding-left: 5px;
+    margin-left: 5px;
+	font-size: 10px;
+}
+
+.gramoptions {
+    border-top: 1px solid #9a9a9a;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.morecomments {
+    text-align: center;
+    margin: auto;
+    display: table;
+    background-color: #fff99d;
+    padding: 15px;
+    margin-top: 5px;
+    border: 1px solid #797979;
+    font-size: 22px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+#gramcomment label {
+	font-size:25px;
+}
+
+#gramcommentbox, #gramcaption {
+    width: 100%;
+    height: 75px;
+    resize: vertical;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.gramloading {
+    font-size: 55px;
+    background-color: #e8e8e8;
+    display: table;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 15px;
+    border: 1px solid #848484;
+}
+
+#gramreplace a{
+	display:table;
+	margin-top: 15px;
+}
+
+.recentimage {
+	float:right;
+}
+
+.recentimage img {
+    width: 30px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.31);
+}
+
+.recentmargin {
+    display: table;
+    margin: auto;
+    width: 480px;
+}
+
+#instagramupload {
+    margin: auto;
+    display: table;
+    width: 450px;
+    text-align: center;
+	margin-bottom: 20px;
+}
+
+#instagramupload label {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#instagramupload input {
+	font-size: 20px;
+}
+
+#grampreview {
+    margin: auto;
+    display: table;
+    max-height: 300px;
+    max-width: 300px;
+    height: 300px;
+    border: 1px solid #7b7b7b;
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+}
+
+.message {
+position:fixed;
+    top: 10px;
+width: 100%;
+height: auto;
+z-index: 2;
+white-space: nowrap;
+}
+
+.successmessage {
+	font-size: 22px;
+    text-align: center;
+	margin:auto;
+    background-color: rgb(74, 253, 0);
+    display: table;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid black;
+}
+
+.error {
+	background-color: #ffb8b8;
+    padding: 5px;
+    font-size: 25px;
+    border: 1px solid;
+	clear: both;
+    display: table;
+	margin: auto;
+    margin-top: 15px;
+}
