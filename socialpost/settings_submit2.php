@@ -42,7 +42,7 @@ if(trim($_POST['facebookpagename']) === '' && $_POST['facebookenabled'] == '1') 
                 echo json_encode($_SESSION['errors']);
                 exit;
 	}} else {
-			$global->sqlquery("UPDATE `ddp_socialpost` SET `facebook_apikey` = '".$facebookapikey."', `facebook_apisecret` = '".$facebookapisecret."', `facebook_accesstoken` = '".$facebookaccesstoken."', `facebook_pagename` = '".$facebookpagename."'");
+			$global->sqlquery("UPDATE `ddp_socialpost` SET `facebook_enabled` = '".$_POST['facebookenabled']."', `facebook_apikey` = '".$facebookapikey."', `facebook_apisecret` = '".$facebookapisecret."', `facebook_accesstoken` = '".$facebookaccesstoken."', `facebook_pagename` = '".$facebookpagename."'");
 			        		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			
 				$resp = array();

@@ -5,6 +5,14 @@ echo '<div id="page"><div class="center">SocialPost Settings</div>
 $global = new DB_global;
 $datainit = $global->sqlquery("SELECT * from ddp_socialpost");
 $data = $datainit->fetch_assoc();
+echo '<form id="pluginsettings" method="post">';
+echo '<div class="sitescrolling">
+<br><input type="checkbox" name="consoleenabled" ';  if ($data['console_enabled'] == '1'){
+	echo 'value="1" checked';
+} else {
+	echo 'value="0"';
+}echo'> Social console enabled<br></div>
+<br /><br /><input class="postsubmit" name="consolesubmit" type="submit" value="Submit"></form>';
 echo '<form id="pluginsettings1" method="post">';
 echo '<div class="sitescrolling">
 <br><input type="checkbox" name="twitterenabled" ';  if ($data['twitter_enabled'] == '1'){
@@ -62,6 +70,20 @@ echo '<div class="sitescrolling">
 <br /><input type="text" name="pinterestboard" value="'.$data['pinterest_board'].'">
 <input type="hidden" name="pinterestdistinguish" value="1">
 <br /><br /><input class="postsubmit" name="pinterestsubmit" type="submit" value="Submit">
+</form>';
+echo '<form id="pluginsettings4" method="post">';
+echo '<div class="sitescrolling">
+<br><input type="checkbox" name="instagramenabled" ';  if ($data['instagram_enabled'] == '1'){
+	echo 'value="1" checked';
+} else {
+	echo 'value="0"';
+}echo'> Instagram enabled<br></div>'; echo'
+<br /><label name="instagramusername">Instagram Username</label>
+<br /><input type="text" name="instagramusername" value='.$data['instagram_username'].'>
+<br /><label name="instagrampassword">Instagram Password</label>
+<br /><input type="password" name="instagrampassword" value="'.$data['instagram_password'].'">
+<input type="hidden" name="instagramdistinguish" value="1">
+<br /><br /><input class="postsubmit" name="instagramsubmit" type="submit" value="Submit">
 </form>
 </div></div>';
 	echo '<script>$(';echo"'";echo'input[type="checkbox"]';echo"').change(function(){

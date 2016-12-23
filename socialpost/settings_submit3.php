@@ -43,7 +43,7 @@ if(trim($_POST['pinterestboard']) === '' && $_POST['pinterestenabled'] == '1')  
                 echo json_encode($_SESSION['errors']);
                 exit;
 	}} else {
-			$global->sqlquery("UPDATE `ddp_socialpost` SET `pinterest_apikey` = '".$pinterestapikey."', `pinterest_apisecret` = '".$pinterestapisecret."', `pinterest_token` = '".$pinterestaccesstoken."', `pinterest_board` = '".$pinterestboard."'");
+			$global->sqlquery("UPDATE `ddp_socialpost` SET `pinterest_enabled` = '".$_POST['pinterestenabled']."', `pinterest_apikey` = '".$pinterestapikey."', `pinterest_apisecret` = '".$pinterestapisecret."', `pinterest_token` = '".$pinterestaccesstoken."', `pinterest_board` = '".$pinterestboard."'");
 			        		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			
 				$resp = array();

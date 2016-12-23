@@ -11,9 +11,138 @@ if( !defined( "INPROCESS" ) ){
 			use DirkGroenen\Pinterest\Pinterest;
 
 class socialpost extends plugin {
+//Social Console
+static function console_link_routes(){
+	$GLOBALS['router']->any('/console/social', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocial', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole');
+   return $templates->render('consolesocial::index');
+});
+
+	$GLOBALS['router']->any('/console/social/twitter', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialpages', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/pages');
+   return $templates->render('consolesocialpages::twitter');
+});
+
+	$GLOBALS['router']->any('/console/social/twitter/update', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::twitterupdate');
+});
+
+	$GLOBALS['router']->any('/console/social/twitter/tweet', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::twitterfunctions');
+});
+
+	$GLOBALS['router']->any('/console/social/twitter/dms', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialpages', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/pages');
+   return $templates->render('consolesocialpages::twitterdm');
+});
+
+	$GLOBALS['router']->any('/console/social/facebook/dms', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialpages', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/pages');
+   return $templates->render('consolesocialpages::facebookdms');
+});
+
+	$GLOBALS['router']->any('/console/social/facebook', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialpages', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/pages');
+   return $templates->render('consolesocialpages::facebook');
+});
+
+	$GLOBALS['router']->any('/console/social/instagram', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialpages', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/pages');
+   return $templates->render('consolesocialpages::instagram');
+});
+
+	$GLOBALS['router']->any('/console/social/instagram/function', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::instagramfunctions');
+});
+
+	$GLOBALS['router']->get('/console/social/instagram/update', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::instagramupdate');
+});
+
+	$GLOBALS['router']->any('/console/social/instagram/upload', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialpages', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/pages');
+   return $templates->render('consolesocialpages::instagramupload');
+});
+
+	$GLOBALS['router']->post('/console/social/instagram/upload/upload', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::instagramupload');
+});
+
+	$GLOBALS['router']->post('/console/social/instagram/comment', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::instagramcomment');
+});
+
+	$GLOBALS['router']->post('/console/social/facebook/update', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::facebookupdate');
+});
+
+	$GLOBALS['router']->post('/console/social/facebook/comment', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::facebookcomment');
+});
+
+	$GLOBALS['router']->post('/console/social/facebook/message', function(){
+
+$templates = new League\Plates\Engine();
+$templates->addFolder('consolesocialincludes', ''.$_SERVER['DOCUMENT_ROOT'].'/plugins/socialpost/socialpostconsole/includes');
+   return $templates->render('consolesocialincludes::facebookmessage');
+});
+
+}
+
+static function console_menu(){
+	$retrive = new DB_retrival;
+				$global = new DB_global;
+		$social1 = $global->sqlquery("SELECT * FROM ddp_socialpost");
+		$social2 = $social1->fetch_assoc();
+	if ($retrive->restrictpermissionlevel('2') or $social2['console_enabled'] == '0'){
+	
+}else {
+echo "<li><a href='/console/social/' alt='Social' title='Social'>Social</a></li>";
+}
+}
+
+//Social Post
 
     static function inc_post_form_bottom_error(){
-		if(isset($_POST['posttotwitter']) && $_POST['posttotwitter'] == '1' && strlen('New in "'.$_POST['category'].'" - '.$GLOBALS['posttitle'].' https://'.$_SERVER['HTTP_HOST'].'/examplexxx '.$_POST['twitterextra']) > 140)  {
+		if(isset($_POST['posttotwitter']) && $_POST['posttotwitter'] == '1' && iconv_strlen('New in "'.$_POST['category'].'" - '.$GLOBALS['posttitle'].' https://'.$_SERVER['HTTP_HOST'].'/examplexxx '.$_POST['twitterextra'], 'UTF-8') > 140)  {
 		$_SESSION['errors']['twitterextra'] = "Twitter post cannot be longer than 140 characters.";
 		$hasError = true;	
 	}
