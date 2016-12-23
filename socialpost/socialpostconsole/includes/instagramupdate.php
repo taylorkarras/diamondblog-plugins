@@ -5,6 +5,7 @@ $retrive = new DB_retrival;
 		$social2 = $social1->fetch_assoc();
 
 if ($retrive->isLoggedIn() == true && $social2['instagram_enabled'] == '1' && $social2['console_enabled'] == '1'){
+	require($_SERVER['DOCUMENT_ROOT']."/plugins/socialpost/vendor/autoload.php");
 $debug = false;
 $truncatedDebug = false;
 $instagram = new \InstagramAPI\Instagram($debug, $truncatedDebug);
