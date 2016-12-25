@@ -135,7 +135,7 @@ static function console_menu(){
 	if ($retrive->restrictpermissionlevel('2') or $social2['console_enabled'] == '0'){
 	
 }else {
-echo "<li><a href='/console/social/' alt='Social' title='Social'>Social</a></li>";
+echo "<li><a ".$retrive->isactive('social')." href='/console/social/' alt='Social' title='Social'>Social</a></li>";
 }
 }
 
