@@ -219,3 +219,8 @@ white-space: nowrap;
 	margin: auto;
     margin-top: 15px;
 }
+
+.featherlight-content iframe {
+    width: 245px;
+    height: 340px;
+}
