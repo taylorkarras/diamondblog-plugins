@@ -52,7 +52,7 @@ if ($retrive->restrictpermissionlevel('2') or $social2['twitter_enabled'] == '0'
 		echo '<div class="tweetverified" alt="Verified" title="Verified">&#10003;</div>';
 		}
 		preg_match('/http*\S+/', $twitterfeed['text'], $htmllinks);
-		echo '<p>'.preg_replace('/http*\S+/', '<a href="'.$htmllinks['0'].'">'.$htmllinks[0].'</a>', $twitterfeed['text']).'</p>';
+		echo '<p>'.preg_replace('/http*\S+/', '<a target="_blank" href="'.$htmllinks['0'].'">'.$htmllinks[0].'</a>', $twitterfeed['text']).'</p>';
 		$twitterdate = new DateTime($twitterfeed['created_at']);
 		echo '<div class="tweetdate">'.$twitterdate->format('F j, Y').' at '.$twitterdate->format('g:i A').'</div>';
 		echo '<div class="tweetlinks">';
