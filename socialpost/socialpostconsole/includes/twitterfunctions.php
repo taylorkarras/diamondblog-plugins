@@ -65,12 +65,38 @@ if (isset($_GET['disretweetid'])){
 	} else {
 	$update = $_POST['statusupdate2'];
 	}
+	} else if (isset($_POST['dmupdate'])){
+	if (empty($_POST['dmupdate'])){
+				$resp = array();
+				$resp['divfail'] = true;
+				$resp['message'] = 'Must have something to send.';
+			
+                echo json_encode($resp);
+		        exit;
+	} else {
+	$update = $_POST['dmupdate'];
+	}
 	}
 	
 	if (isset($_POST['replyid'])){
 	$replyid = $_POST['replyid'];
 	} else if (isset($_POST['replyid2'])){
 	$replyid = $_POST['replyid2'];
+	}
+	
+	if (isset($_POST['dmupdate'])){
+		$tconnection = new TwitterOAuth($social2['twitter_apikey'], $social2['twitter_apisecret'], $social2['twitter_accesstoken'], $social2['twitter_accesstokensecret']);
+		$tconnection->post("direct_messages/new", ["screen_name" => $_SESSION['socialpost']['convouser'], "text" => $update]);
+
+							        		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			
+				$resp = array();
+				$resp['divsubmit'] = true;
+				$resp['message'] = 'Message sent.';
+			
+                echo json_encode($resp);
+		        exit;
+	}
 	}
 	
 		$tconnection = new TwitterOAuth($social2['twitter_apikey'], $social2['twitter_apisecret'], $social2['twitter_accesstoken'], $social2['twitter_accesstokensecret']);
