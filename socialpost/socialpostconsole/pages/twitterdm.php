@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/scripts/twitter.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
-<body>
+<body onload="$('.convooverflow').scrollTop($('.convooverflow')[0].scrollHeight);">
 <style media="screen and (max-width : 535px)">
 .tweetdate {
 	    margin-bottom: 15px;
@@ -83,7 +83,7 @@ echo '<img class="convoinboximage" src="'.$userinfo["profile_image_url_https"].'
 echo '</div></a>';
 		}
 ?></div>
-<div id="messagedisplay"><div class="messagetable"><?php if (isset($_GET['convouser'])) {
+<div id="messagedisplay"><div class="messagetable"><?php if (isset($_GET['convouser']) && in_array($_GET['convouser'], $names)) {
 $_SESSION['socialpost']['convouser'] = $_GET['convouser'];
 $owndmtimeline = json_decode(json_encode($tconnection->get("direct_messages/sent", ["count" => 200])), true);
 $mergeddmtimelines = array_merge($dmtimeline, $owndmtimeline);
