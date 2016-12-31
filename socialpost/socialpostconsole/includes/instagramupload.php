@@ -3,6 +3,7 @@ $retrive = new DB_retrival;
 $global = new DB_global;
 		$social1 = $global->sqlquery("SELECT * FROM ddp_socialpost");
 		$social2 = $social1->fetch_assoc();
+		try{
 if ($retrive->isLoggedIn() == true && $social2['instagram_enabled'] == '1' && $social2['console_enabled'] == '1'){
     if (isset($_POST))
 {
@@ -141,4 +142,8 @@ $instagram->login();
 	} }  else {
  header("HTTP/1.0 403 Forbidden");
  die();
-} ?>
+} 
+		} catch (Exception $e){
+			echo $e->getMessage();
+			exit;
+		}?>
