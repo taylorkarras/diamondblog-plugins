@@ -42,7 +42,9 @@ $convos = $convosinit->getDecodedBody();
 //var_dump($convos);
 
 foreach($convos['data'] as $convosid){
-echo '<a href="?convoid='.$convosid['id'].'"><div class="convothread">';
+echo '<a href="?convoid='.$convosid['id'].'"><div class="convothread';if ($_GET['convoid'] == $convosid['id']){
+echo ' convoactive';	
+}echo '">';
 $imageinit = $fb->get('/'.$convosid['senders']['data']['0']['id'].'/picture?redirect=0', $pageAccessToken);
 $image = $imageinit->getDecodedBody();
 echo '<img class="convoinboximage" src="'.$image['data']['url'].'" title="'.$convosid['senders']['data']['0']['name'].'" alt="'.$convosid['senders']['data']['0']['name'].'"><div class="convocount">('.$convosid['message_count'].')</div>';
