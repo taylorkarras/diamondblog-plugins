@@ -38,6 +38,14 @@ if ($retrive->restrictpermissionlevel('2') or $social2['twitter_enabled'] == '0'
 <ul class="tabs">
 <li><a href="#main" alt="Main" title="Main" class="maintab">&#128441;</a></li>
 <li><a href="#replies" alt="Replies" title="Replies" class="repliestab">@</a></li>
+<li><a href="/console/social/twitter/dms" alt="Direct Messages" title="Direct Messages" class="messagestab">&#9993;</a></li>
+<script>
+$(".messagestab").click(function( event ) {
+  event.preventDefault();
+  var url = 'https://' + location.host + '/console/social/twitter/dms';
+  $(location).attr('href',url);
+});
+</script>
 </ul>
 </div>
 <div id="main"><div class="overflow">
