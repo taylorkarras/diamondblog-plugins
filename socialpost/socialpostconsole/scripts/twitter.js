@@ -120,6 +120,56 @@ $('#status').keypress(function (e) {
 });
 
 $(function() {
+$('#dm').keypress(function (e) {
+        if(e.which == 13) {
+	  var myinstances = [];
+	  var div_id = $( "#twitterbar" );
+      $.each($('form input, form select'), function(i, v) {
+          if (v.type !== 'submit') {
+              data[v.name] = v.value;
+          }
+	  }); $.each($('textarea'), function(i, v) {
+          if (v.type !== 'submit') {
+              data[v.name] = v.value;
+          }
+      });
+	  //end each
+     $.ajax({
+          dataType: 'json',
+          type: 'POST',
+          url: '/console/social/twitter/tweet',
+          data: data,
+          success: function(resp) {
+              if (resp.divsubmit === true) {
+				  $('#dmupdate').val('');
+        var text_length = $('#dmupdate').val().length;
+        var text_remaining = text_max - text_length;
+        $('#chars').html(text_remaining + ' characters remaining');
+				  div_id.append('<div class="message"><div class="successmessage">'+resp.message+'</div></div>');
+				  $('.successmessage').delay(5000).fadeOut('fast');
+			  } else if (resp.divfail === true) {
+				  div_id.append('<div class="message"><div class="successmessage" style="background-color:#ff8181;">'+resp.message+'</div></div>');
+				  $('.successmessage').delay(5000).fadeOut('fast');
+			  } else {
+                  $.each(resp, function(i, v) {
+	        console.log(i + " => " + v); // view in console for error messages
+                      var msg = '<div class="break"></div><label class="error" for="'+i+'">'+v+'</label>';
+                      $('input[name="' + i + '"], select[name="' + i + '"], textarea[name="' + i + '"]').addClass('inputTxtError').after(msg);
+                  });
+                  var keys = Object.keys(resp);
+                  $('input[name="'+keys[0]+'"]').focus();
+              }
+          },
+          error: function(xhr, status, error) {
+			  var err = eval("(" + xhr.responseText + ")");
+              console.log(err.Message);
+          }
+      }); 
+      return false;
+}});
+});
+
+$(function() {
 $('#status2').keypress(function (e) {
         if(e.which == 13) {
 	  var myinstances = [];
