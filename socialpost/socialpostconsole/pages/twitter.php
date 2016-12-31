@@ -33,6 +33,10 @@ if ($retrive->restrictpermissionlevel('2') or $social2['twitter_enabled'] == '0'
 .tweetimage {
     padding: 10px;
 }
+
+#twitterbar li {
+    margin-right: -15px !important;
+}
 </style>
 <div id="twitterbar">
 <ul class="tabs">
