@@ -20,6 +20,10 @@
 .tweetimage {
     padding: 10px;
 }
+
+#twitterbar li {
+    margin-right: -15px !important;
+}
 </style>
 <div id="twitterbar">
 <ul>
