@@ -15,7 +15,7 @@ if ($retrive->restrictpermissionlevel('2') or $social2['facebook_enabled'] == '0
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
-<body>
+<body onload="$('.convooverflow').scrollTop($('.convooverflow')[0].scrollHeight);">
 <style>body {
 	height: 100%;
 }</style>
