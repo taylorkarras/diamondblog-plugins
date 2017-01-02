@@ -97,9 +97,9 @@ echo '<html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body><div id="gramcomments" class="dmoverflow" style="padding:15px;">';
+$instagram->directThreadAction($_GET['dmid'], approve);
 $dm = json_decode(json_encode($instagram->directthread($_GET['dmid'])), true);
 $owndm = json_decode(json_encode($instagram->getSelfUsernameInfo()), true);
-var_dump($dm);
  foreach ($dm['thread']['items'] as $dmitem){
 if (!empty($dmitem["media_share"]["image_versions2"]["candidates"][0])){
 $item = '<img class="dmimage" src='.$dmitem["media_share"]["image_versions2"]["candidates"][0]['url'].'>';
