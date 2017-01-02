@@ -123,7 +123,7 @@ margin: 0;
 	font-size:25px;
 }
 
-#gramcommentbox, #gramcaption {
+#gramcommentbox, #dmbox, #gramcaption {
     width: 100%;
     height: 75px;
     resize: vertical;
@@ -223,4 +223,32 @@ white-space: nowrap;
 .featherlight-content iframe {
     width: 245px;
     height: 340px;
+}
+
+#messages a {
+    color: #000;
+    text-decoration: none;
+}
+
+.dmoverflow {
+overflow-y: scroll;
+height: calc(100% - 125px);
+}
+
+#dmsend {
+    width: 92%;
+    position: absolute;
+    bottom: 0;
+    margin-top: 10px;
+	padding: 10px;
+	background-color:#eaeaea;
+    margin: 0;
+}
+
+.dmimage {
+    display: inline-block;
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid black;
+    margin-top: 15px;
 }
