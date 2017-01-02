@@ -24,14 +24,14 @@ if (isset($_GET['lasttweetid'])){
 		echo '<div class="tweetdate">'.$twitterdate->format('F j, Y').' at '.$twitterdate->format('g:i A').'</div>';
 		echo '<div class="tweetlinks">';
 		if ($twitterfeed['retweeted'] == true){
-		echo '<a href="#" onclick="disretweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" style="color: #29a533; font-weight: bold;" class="tweetretweet">Retweeted ('.$twitterfeed['retweet_count'].')</a> | ';
+		echo '<a href="javascript:void(0)" onclick="disretweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" style="color: #29a533; font-weight: bold;" class="tweetretweet">Retweeted ('.$twitterfeed['retweet_count'].')</a> | ';
 		} else {
-		echo '<a href="#" onclick="retweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" class="tweetretweet">Retweet ('.$twitterfeed['retweet_count'].')</a> | ';
-		} echo '<a href="#" onclick="$(&#39;#statusupdate2&#39;).val(&#39;@'.$twitterfeed['user']['screen_name'].'&#39;);$(&#39;#replyid2&#39;).val(&#39;'.$twitterfeed['id'].'&#39;);" title="Reply to @'.$twitterfeed['user']['screen_name'].'" alt="Reply to @'.$twitterfeed['user']['screen_name'].'">Reply</a> | ';
+		echo '<a href="javascript:void(0)" onclick="retweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" class="tweetretweet">Retweet ('.$twitterfeed['retweet_count'].')</a> | ';
+		} echo '<a href="javascript:void(0)" onclick="$(&#39;#statusupdate2&#39;).val(&#39;@'.$twitterfeed['user']['screen_name'].'&#39;);$(&#39;#replyid2&#39;).val(&#39;'.$twitterfeed['id'].'&#39;);" title="Reply to @'.$twitterfeed['user']['screen_name'].'" alt="Reply to @'.$twitterfeed['user']['screen_name'].'">Reply</a> | ';
 		if ($twitterfeed['favorited'] == true){
-		echo '<a href="#" onclick="disfavoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" style="color: #e0001d; font-weight: bold;" class="tweetfavorite">Favorited</a></div>';
+		echo '<a href="javascript:void(0)" onclick="disfavoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" style="color: #e0001d; font-weight: bold;" class="tweetfavorite">Favorited</a></div>';
 		} else {
-		echo '<a href="#" onclick="favoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" class="tweetfavorite">Favorite</a></div>';
+		echo '<a href="javascript:void(0)" onclick="favoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" class="tweetfavorite">Favorite</a></div>';
 		}
 		echo '</div>';
 		}
@@ -53,14 +53,14 @@ if (isset($_GET['lasttweetid'])){
 		echo '<div class="tweetdate">'.$twitterdate->format('F j, Y').' at '.$twitterdate->format('g:i A').'</div>';
 		echo '<div class="tweetlinks">';
 		if ($twitterfeed['retweeted'] == true){
-		echo '<a href="#" onclick="disretweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" style="color: #29a533; font-weight: bold;" class="tweetretweet">Retweeted ('.$twitterfeed['retweet_count'].')</a> | ';
+		echo '<a href="javascript:void(0)" onclick="disretweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" style="color: #29a533; font-weight: bold;" class="tweetretweet">Retweeted ('.$twitterfeed['retweet_count'].')</a> | ';
 		} else {
-		echo '<a href="#" onclick="retweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" class="tweetretweet">Retweet ('.$twitterfeed['retweet_count'].')</a> | ';
-		} echo '<a href="#" onclick="$(&#39;#statusupdate2&#39;).val(&#39;@'.$twitterfeed['user']['screen_name'].'&#39;);$(&#39;#replyid2&#39;).val(&#39;'.$twitterfeed['id'].'&#39;);" title="Reply to @'.$twitterfeed['user']['screen_name'].'" alt="Reply to @'.$twitterfeed['user']['screen_name'].'">Reply</a> | ';
+		echo '<a href="javascript:void(0)" onclick="retweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Retweet" title="Retweet" class="tweetretweet">Retweet ('.$twitterfeed['retweet_count'].')</a> | ';
+		} echo '<a href="javascript:void(0)" onclick="$(&#39;#statusupdate2&#39;).val(&#39;@'.$twitterfeed['user']['screen_name'].'&#39;);$(&#39;#replyid2&#39;).val(&#39;'.$twitterfeed['id'].'&#39;);" title="Reply to @'.$twitterfeed['user']['screen_name'].'" alt="Reply to @'.$twitterfeed['user']['screen_name'].'">Reply</a> | ';
 		if ($twitterfeed['favorited'] == true){
-		echo '<a href="#" onclick="disfavoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" style="color: #e0001d; font-weight: bold;" class="tweetfavorite">Favorited</a></div>';
+		echo '<a href="javascript:void(0)" onclick="disfavoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" style="color: #e0001d; font-weight: bold;" class="tweetfavorite">Favorited</a></div>';
 		} else {
-		echo '<a href="#" onclick="favoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" class="tweetfavorite">Favorite</a></div>';
+		echo '<a href="javascript:void(0)" onclick="favoritetweet'; echo"('".$twitterfeed['id']."')"; echo'" alt="Favorite" title="Favorite" class="tweetfavorite">Favorite</a></div>';
 		}
 		echo '</div>';
 		}
