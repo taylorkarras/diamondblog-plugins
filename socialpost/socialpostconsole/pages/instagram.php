@@ -21,7 +21,7 @@ $instagram->login();
 <meta name="robots" content="noindex">
 <link href="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/styles/instagram.css" rel="stylesheet" type="text/css">
 <link href="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/scripts/featherlight.min.css" rel="stylesheet" type="text/css">
-<script src="https://<?php echo $_SERVER['HTTP_HOST']?>/includes/console/scripts/jquery-2.2.3.min.js"></script>
+<script src="https://<?php echo $_SERVER['HTTP_HOST']?>/scripts/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/scripts/instagram.js"></script>
 <script type="text/javascript" src="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/scripts/featherlight.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -73,10 +73,10 @@ $instagram->login();
 		echo '<a class="morecomments" href="https://'.$_SERVER['HTTP_HOST'].'/console/social/instagram/function?commentsmoreid='.$timelineitem2['caption']['media_id'].'" data-featherlight="iframe">View Comments</a>';
 	echo '<div class="gramoptions">';
 	if ($timelineitem2["has_liked"] == false){
-	echo '<a href="#" class="gramfavorite" onclick="favorite('; echo "'".$timelineitem2['caption']['media_id']."'"; echo ')" title="Like" alt="Like">Like</a>';
+	echo '<a href="javascript:void(0)" class="gramfavorite" onclick="favorite('; echo "'".$timelineitem2['caption']['media_id']."'"; echo ')" title="Like" alt="Like">Like</a>';
 	}
 	else if ($timelineitem2["has_liked"] == true){
-	echo '<a href="#" class="gramfavorite" onclick="defavorite('; echo "'".$timelineitem2['caption']['mediaid']."'"; echo ')" style="color: #e0001d; font-weight: bold;" title="Like" alt="Like">Liked</a>';
+	echo '<a href="javascript:void(0)" class="gramfavorite" onclick="defavorite('; echo "'".$timelineitem2['caption']['mediaid']."'"; echo ')" style="color: #e0001d; font-weight: bold;" title="Like" alt="Like">Liked</a>';
 	}
 	echo '<div class="gramdate">'.date("F j, Y \a\\t\ g:i A", $timelineitem2["taken_at"]).'</div>';
 	echo '</div>';
@@ -131,10 +131,42 @@ echo '<div class="recentmargin">';
 echo '</div>';
 ?>
 </div></div>
+<div id="messages"><div class="overflow">
+<?php $messages = json_decode(json_encode($instagram->getv2Inbox()), true);
+
+//var_dump($messages);
+
+echo '<div class="recentmargin">';
+
+ foreach ($messages['inbox']['threads'] as $key2 => $messageitem){
+if (!empty($messageitem["users"])){
+$userpic = $messageitem['users'][0]['profile_pic_url'];
+$username = $messageitem['users'][0]['username'];
+} else {
+$userpic = $messageitem["inviter"]['profile_pic_url'];
+$username = $messageitem["inviter"]['username'];
+}
+
+if ($messageitem['items'][0]["media_share"]["media_type"] == '1'){
+$item = 'Picture Attached';
+} else if ($messageitem['items'][0]["item_type"] == 'like'){
+$item = '&#10084';
+} else {
+$item = $messageitem['items'][0]['text'];
+}
+	 echo '<a class="messagelink" href="https://'.$_SERVER['HTTP_HOST'].'/console/social/instagram/function?dmid='.$messageitem["thread_id"].'" data-featherlight="iframe">';
+	     echo '<div class="recentitem"><img class="gramavatar" src="'.$userpic.'"><strong>'.$username.':</strong> '.$item.'</div>';
+		echo '</a>';
+}
+
+echo '</div>'
+?>
+</div></div>
 <div id="grambar">
 <ul class="tabs">
 <li><a href="#main" alt="Main" title="Main" class="maintab">&#128441;</a></li>
 <li><a href="#recent" alt="Recent Activity" title="Recent Activity" class="recenttab">&#128712;</a></li>
+<li><a href="#messages" alt="Direct Messages" title="Direct Messages" class="messagestab">&#9993;</a></li>
 <li><a href="/console/social/instagram/upload" alt="Upload Photos and Videos" title="Upload Photos and Videos" class="uploadtab">&#129129;</a></li>
 <script>
 $(".uploadtab").click(function( event ) {
