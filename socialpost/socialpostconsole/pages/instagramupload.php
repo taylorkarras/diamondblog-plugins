@@ -14,7 +14,7 @@ if ($retrive->restrictpermissionlevel('2') or $social2['instagram_enabled'] == '
 <meta name="robots" content="noindex">
 <link href="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/styles/instagram.css" rel="stylesheet" type="text/css">
 <link href="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/scripts/featherlight.min.css" rel="stylesheet" type="text/css">
-<script src="https://<?php echo $_SERVER['HTTP_HOST']?>/includes/console/scripts/jquery-2.2.3.min.js"></script>
+<script src="https://<?php echo $_SERVER['HTTP_HOST']?>/scripts/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="https://<?php echo $_SERVER['HTTP_HOST']?>/plugins/socialpost/socialpostconsole/scripts/featherlight.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
@@ -62,6 +62,7 @@ font-size: initial !important;
 <ul class="tabs">
 <li><a href="/console/social/instagram#main" alt="Main" title="Main" class="maintab">&#128441;</a></li>
 <li><a href="/console/social/instagram#recent" alt="Recent Activity" title="Recent Activity" class="recenttab">&#128712;</a></li>
+<li><a href="/console/social/instagram#messages" alt="Direct Messages" title="Direct Messages" class="messagestab">&#9993;</a></li>
 <li><a href="#" alt="Upload Photos and Videos" title="Upload Photos and Videos" class="active uploadtab">&#129129;</a></li>
 </ul>
 </div>
