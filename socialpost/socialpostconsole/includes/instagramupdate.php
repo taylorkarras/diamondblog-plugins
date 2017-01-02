@@ -42,10 +42,10 @@ if (isset($_GET['nextmaxid'])){
 		echo '<a class="morecomments" href="https://'.$_SERVER['HTTP_HOST'].'/console/social/instagram/function?commentsmoreid='.$timelineitem2['caption']['media_id'].'" data-featherlight="iframe">View Comments</a>';
 	echo '<div class="gramoptions">';
 	if ($timelineitem2["has_liked"] == false){
-	echo '<a href="#" class="gramfavorite" onclick="favorite('; echo "'".$timelineitem2['caption']['media_id']."'"; echo ')" title="Like" alt="Like">Like</a>';
+	echo '<a href="javascript:void(0)" class="gramfavorite" onclick="favorite('; echo "'".$timelineitem2['caption']['media_id']."'"; echo ')" title="Like" alt="Like">Like</a>';
 	}
 	else if ($timelineitem2["has_liked"] == true){
-	echo '<a href="#" class="gramfavorite" onclick="defavorite('; echo "'".$timelineitem2['caption']['mediaid']."'"; echo ')" style="color: #e0001d; font-weight: bold;" title="Like" alt="Like">Liked</a>';
+	echo '<a href="javascript:void(0)" class="gramfavorite" onclick="defavorite('; echo "'".$timelineitem2['caption']['mediaid']."'"; echo ')" style="color: #e0001d; font-weight: bold;" title="Like" alt="Like">Liked</a>';
 	}
 	echo '<div class="gramdate">'.date("F j, Y \a\\t\ g:i A", $timelineitem2["taken_at"]).'</div>';
 	echo '</div>';
