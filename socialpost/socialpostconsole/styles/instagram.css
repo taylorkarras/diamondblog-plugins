@@ -230,6 +230,11 @@ white-space: nowrap;
     text-decoration: none;
 }
 
+#messages a:hover {
+	text-decoration:underline;
+	color: #a2a2a2;
+}
+
 .dmoverflow {
 overflow-y: scroll;
 height: calc(100% - 125px);
