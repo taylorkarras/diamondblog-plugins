@@ -262,9 +262,6 @@ $pinterest->pins->create(array(
 		echo '<br><input type="checkbox" name="posttopinterest" value="1" checked> Post to Pinterest';
 				}
 		echo '</div>';
-		echo '<script>$(';echo"'";echo'input[type="checkbox"]';echo"').change(function(){
-    this.value = (Number(this.checked));
-	});</script>";
 			}
     }
 }
