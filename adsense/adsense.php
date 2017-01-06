@@ -9,29 +9,38 @@ class adsense extends plugin {
 
     static function content_top(){
 		$global = new DB_global;
+		$check = new DB_check;
 		$adcode1 = $global->sqlquery("SELECT * from ddp_adsense");
 		$adcode2 = $adcode1->fetch_assoc();
+		if (!$check->isLoggedIn()){
         echo $adcode2['adcode_content'];
 		echo '<br>';
         return true;
+		}
     }
 	
     static function post_top(){
 		$global = new DB_global;
+		$check = new DB_check;
 		$adcode1 = $global->sqlquery("SELECT * from ddp_adsense");
 		$adcode2 = $adcode1->fetch_assoc();
+		if (!$check->isLoggedIn()){
         echo $adcode2['adcode_post'];
 		echo '<br>';
         return true;
+		}
     }
 	
     static function post_bottom(){
 		$global = new DB_global;
+		$check = new DB_check;
 		$adcode1 = $global->sqlquery("SELECT * from ddp_adsense");
 		$adcode2 = $adcode1->fetch_assoc();
+		if (!$check->isLoggedIn()){
         echo $adcode2['adcode_post'];
 		echo '<br>';
         return true;
+		}
     }
 }
 ?>
