@@ -39,7 +39,7 @@ $('ul.tabs').each(function(){
 function favorite(id) {
 	$.get('/console/social/instagram/function?favoriteid=' + id, function(data) {
 		if (data == "Favorited") {
-			$("[gramid=" + id + "]").find(".gramfavorite").css({color: "#e0001d", "font-weight": "bold"}).text("Liked").attr("onclick","disfavoritetweet('" + id + "')");
+			$("[gramid=" + id + "]").find(".gramfavorite").css({color: "#e0001d", "font-weight": "bold"}).text("Liked").attr("onclick","defavorite('" + id + "')");
 		}
 	});
 }
@@ -47,7 +47,7 @@ function favorite(id) {
 function defavorite(id) {;
 	$.get('/console/social/instagram/function?disfavoriteid=' + id, function(data) {
 		if (data == "Disfavorited") {
-			$("[gramid=" + id + "]").find(".gramfavorite").removeAttr("style").text("Like").attr("onclick","favoritetweet('" + id + "')");
+			$("[gramid=" + id + "]").find(".gramfavorite").removeAttr("style").text("Like").attr("onclick","favorite('" + id + "')");
 		}
 	});
 }
